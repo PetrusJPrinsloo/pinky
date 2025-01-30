@@ -1,5 +1,6 @@
 from tokens import *
 
+
 class Lexer:
     def __init__(self, source):
         self.source = source
@@ -17,6 +18,8 @@ class Lexer:
         return self.source[self.curr]
 
     def lookahead(self, n=1):
+        if self.curr >= len(self.source):
+            return '\0'
         return self.source[self.curr + n]
 
     def match(self, expected):
@@ -32,32 +35,78 @@ class Lexer:
 
     def tokenize(self):
         while self.curr < len(self.source):
-           self.start = self.curr
-           ch = self.advance()
+            self.start = self.curr
+            ch = self.advance()
 
-           if ch == '\n':self.line = self.line + 1
-           elif ch == '\r':pass
-           elif ch == '\t':pass
-           elif ch == ' ':pass
-           elif ch == '#':
-               while self.peek() != '\n':
-                   self.advance()
-           elif ch == '(': self.add_token(TOK_LPAREN)
-           elif ch == ')': self.add_token(TOK_RPAREN)
-           elif ch == '{': self.add_token(TOK_LCURLY)
-           elif ch == '}': self.add_token(TOK_RCURLY)
-           elif ch == '[': self.add_token(TOK_LSQUAR)
-           elif ch == ']': self.add_token(TOK_RSQUAR)
-           elif ch == '.': self.add_token(TOK_DOT)
-           elif ch == ',': self.add_token(TOK_COMMA)
-           elif ch == '+': self.add_token(TOK_PLUS)
-           elif ch == '-': self.add_token(TOK_MINUS)
-           elif ch == '*': self.add_token(TOK_STAR)
-           elif ch == '^': self.add_token(TOK_CARET)
-           elif ch == '/': self.add_token(TOK_SLASH)
-           elif ch == ';': self.add_token(TOK_SEMICOLON)
-           elif ch == '?': self.add_token(TOK_QUESTION)
-           elif ch == '%': self.add_token(TOK_MOD)
-           elif ch == '*': self.add_token(TOK_STAR)
-
+            if ch == '\n':
+                self.line = self.line + 1
+            elif ch == '\r':
+                pass
+            elif ch == '\t':
+                pass
+            elif ch == ' ':
+                pass
+            elif ch == '#':
+                while self.peek() != '\n' and not(self.curr >= len(self.source)):
+                    self.advance()
+            elif ch == '(':
+                self.add_token(TOK_LPAREN)
+            elif ch == ')':
+                self.add_token(TOK_RPAREN)
+            elif ch == '{':
+                self.add_token(TOK_LCURLY)
+            elif ch == '}':
+                self.add_token(TOK_RCURLY)
+            elif ch == '[':
+                self.add_token(TOK_LSQUAR)
+            elif ch == ']':
+                self.add_token(TOK_RSQUAR)
+            elif ch == '.':
+                self.add_token(TOK_DOT)
+            elif ch == ',':
+                self.add_token(TOK_COMMA)
+            elif ch == '+':
+                self.add_token(TOK_PLUS)
+            elif ch == '-':
+                self.add_token(TOK_MINUS)
+            elif ch == '*':
+                self.add_token(TOK_STAR)
+            elif ch == '^':
+                self.add_token(TOK_CARET)
+            elif ch == '/':
+                self.add_token(TOK_SLASH)
+            elif ch == ';':
+                self.add_token(TOK_SEMICOLON)
+            elif ch == '?':
+                self.add_token(TOK_QUESTION)
+            elif ch == '%':
+                self.add_token(TOK_MOD)
+            elif ch == '=':
+                if self.match('='):
+                    self.add_token(TOK_EQ)
+            elif ch == '~':
+                if self.match('='):
+                    self.add_token(TOK_NE)
+                else:
+                    self.add_token(TOK_NOT)
+            # TODO:
+            # <, <=, >, >=, :, :=
+            elif ch == '<':
+                if self.match('='):
+                    self.add_token(TOK_LE)
+                else:
+                    self.add_token(TOK_LT)
+            if ch == '>':
+                if self.match('='):
+                    self.add_token(TOK_GE)
+                else:
+                    self.add_token(TOK_GT)
+            if ch == ':':
+                if self.match('='):
+                    self.add_token(TOK_ASSIGN)
+                else:
+                    self.add_token(TOK_COLON)
+            #TODO: Check if it is a digit, then perform logic of reading either ints of float
+            #TODO: Check if it is a ' then perform logic of reading a string token
+            #TODO: Check if it is an alpha character or _ then we must handle an identifier
         return self.tokens

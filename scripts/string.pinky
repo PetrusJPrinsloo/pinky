@@ -1,0 +1,5 @@
+# this will test that a string is processed correctly
+
+"Hello there"
+4
+'this is also a string'

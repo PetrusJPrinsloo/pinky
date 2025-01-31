@@ -1,0 +1,2 @@
+# tests that integers and numbers are tokenised properly
+5 * 4.3 / (2 - 4)

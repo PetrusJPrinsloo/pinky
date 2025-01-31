@@ -9,18 +9,22 @@ class Lexer:
         self.line = 1
         self.tokens = []
 
+
     def advance(self):
         ch = self.source[self.curr]
         self.curr = self.curr + 1
         return ch
 
+
     def peek(self):
         return self.source[self.curr]
+
 
     def lookahead(self, n=1):
         if self.curr >= len(self.source):
             return '\0'
         return self.source[self.curr + n]
+
 
     def match(self, expected):
         if self.curr >= len(self.source):
@@ -30,8 +34,42 @@ class Lexer:
         self.curr = self.curr + 1
         return True
 
+
     def add_token(self, token_type):
         self.tokens.append(Token(token_type, self.source[self.start:self.curr], self.line))
+
+
+    def handle_number(self):
+        while self.peek().isdigit():
+            self.advance()
+        if self.peek() == '.' and self.lookahead().isdigit():
+            self.advance()
+            while self.peek().isdigit():
+                self.advance()
+            self.add_token(TOK_FLOAT)
+        else:
+            self.add_token(TOK_INTEGER)
+
+
+    def handle_string(self, open_quote):
+        while self.peek() != open_quote and not (self.curr >= len(self.source)):
+            self.advance()
+        if self.curr >= len(self.source):
+            raise SyntaxError(f'[Line {self.line}] Unterminated string')
+        self.advance()
+        self.add_token(TOK_QUESTION)
+
+
+    def handle_identifier_and_keywords(self):
+        while self.peek().isalnum() or self.peek() == '_':
+            self.advance()
+        text = self.source[self.start:self.curr]
+        keyword_type = keywords.get(text)
+        if keyword_type == None:
+            self.add_token(TOK_IDENTIFIER)
+        else:
+            self.add_token(keyword_type)
+
 
     def tokenize(self):
         while self.curr < len(self.source):
@@ -46,7 +84,7 @@ class Lexer:
                 pass
             elif ch == ' ':
                 pass
-            elif ch == '#':
+            elif ch == '-':
                 while self.peek() != '\n' and not(self.curr >= len(self.source)):
                     self.advance()
             elif ch == '(':
@@ -89,8 +127,6 @@ class Lexer:
                     self.add_token(TOK_NE)
                 else:
                     self.add_token(TOK_NOT)
-            # TODO:
-            # <, <=, >, >=, :, :=
             elif ch == '<':
                 if self.match('='):
                     self.add_token(TOK_LE)
@@ -106,7 +142,10 @@ class Lexer:
                     self.add_token(TOK_ASSIGN)
                 else:
                     self.add_token(TOK_COLON)
-            #TODO: Check if it is a digit, then perform logic of reading either ints of float
-            #TODO: Check if it is a ' then perform logic of reading a string token
-            #TODO: Check if it is an alpha character or _ then we must handle an identifier
+            if ch.isdigit():
+                self.handle_number()
+            if ch == "'" or ch == '"':
+                self.handle_string(ch)
+            if ch.isalpha() or ch == '_':
+                self.handle_identifier_and_keywords()
         return self.tokens

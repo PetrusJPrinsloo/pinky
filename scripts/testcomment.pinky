@@ -1,2 +1,4 @@
-#this is a comment that will be ignored
+-- this is a comment that will be ignored
 + - * /
+bob := 5.43 - -5
+

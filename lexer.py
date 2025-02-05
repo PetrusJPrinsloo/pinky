@@ -84,9 +84,6 @@ class Lexer:
                 pass
             elif ch == ' ':
                 pass
-            elif ch == '-':
-                while self.peek() != '\n' and not(self.curr >= len(self.source)):
-                    self.advance()
             elif ch == '(':
                 self.add_token(TOK_LPAREN)
             elif ch == ')':
@@ -106,7 +103,11 @@ class Lexer:
             elif ch == '+':
                 self.add_token(TOK_PLUS)
             elif ch == '-':
-                self.add_token(TOK_MINUS)
+                if self.match('-'):
+                    while self.peek() != '\n' and not (self.curr >= len(self.source)):
+                        self.advance()
+                else:
+                    self.add_token(TOK_MINUS)
             elif ch == '*':
                 self.add_token(TOK_STAR)
             elif ch == '^':
@@ -121,6 +122,8 @@ class Lexer:
                 self.add_token(TOK_MOD)
             elif ch == '=':
                 if self.match('='):
+                    self.add_token(TOK_EQEQ)
+                else:
                     self.add_token(TOK_EQ)
             elif ch == '~':
                 if self.match('='):
@@ -132,20 +135,22 @@ class Lexer:
                     self.add_token(TOK_LE)
                 else:
                     self.add_token(TOK_LT)
-            if ch == '>':
+            elif ch == '>':
                 if self.match('='):
                     self.add_token(TOK_GE)
                 else:
                     self.add_token(TOK_GT)
-            if ch == ':':
+            elif ch == ':':
                 if self.match('='):
                     self.add_token(TOK_ASSIGN)
                 else:
                     self.add_token(TOK_COLON)
-            if ch.isdigit():
+            elif ch.isdigit():
                 self.handle_number()
-            if ch == "'" or ch == '"':
+            elif ch == "'" or ch == '"':
                 self.handle_string(ch)
-            if ch.isalpha() or ch == '_':
+            elif ch.isalpha() or ch == '_':
                 self.handle_identifier_and_keywords()
+            else:
+                raise SyntaxError(f'[Line {self.line}] Unrecognized character')
         return self.tokens

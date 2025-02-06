@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Start planning out parsing with simple expressions">
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Working on parser, still need helper functions filled in.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
     </list>
@@ -114,7 +114,7 @@
       <workItem from="1738223300049" duration="8571000" />
       <workItem from="1738316442275" duration="11528000" />
       <workItem from="1738406525201" duration="16067000" />
-      <workItem from="1738840159002" duration="822000" />
+      <workItem from="1738840159002" duration="3208000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -148,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738741051428</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Working on parser, still need helper functions filled in.">
+      <option name="closed" value="true" />
+      <created>1738841666733</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738841666733</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,7 +167,8 @@
     <MESSAGE value="Add some test files and 2 character tokens" />
     <MESSAGE value="can now detect keywords, identifiers, strings and numbers" />
     <MESSAGE value="Start planning out parsing with simple expressions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start planning out parsing with simple expressions" />
+    <MESSAGE value="Working on parser, still need helper functions filled in." />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on parser, still need helper functions filled in." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

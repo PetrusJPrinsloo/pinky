@@ -9,6 +9,38 @@ class Parser:
         self.tokens = tokens
         self.current = 0
 
+    def advance(self):
+        self.current += 1
+
+    def peek(self):
+        if self.current >= len(self.tokens):
+            raise EOFError
+        return self.tokens[self.current]
+
+
+    def is_next(self, expected_type):
+        if self.current + 1 >= len(self.tokens):
+            return False
+        return isinstance(self.tokens[self.current + 1], expected_type)
+
+
+    def expect(self, expected_type):
+        if self.current >= len(self.tokens):
+            return False
+        return isinstance(self.tokens[self.current], expected_type)
+
+
+    def match(self, expected_type):
+        if self.current >= len(self.tokens):
+            return False
+        return self.tokens[self.current] if isinstance(self.tokens[self.current], expected_type) else False
+
+
+    def previous_token(self):
+        if self.current > 0:
+            return self.tokens[self.current - 1]
+
+
     # <primary>  ::=  <integer> | <float> | '(' <expr> ')'
     def primary(self):
         if self.match(TOK_INTEGER): return Integer(int(self.previous_token().lexeme))
@@ -20,6 +52,7 @@ class Parser:
             else:
                 return Grouping(expr)
 
+
     # <unary>  ::=  ('+'|'-'|'~') <unary>  |  <primary>
     def unary(self):
         if self.match(TOK_NOT) or self.match(TOK_MINUS) or self.match(TOK_MINUS):
@@ -28,8 +61,10 @@ class Parser:
             return UnaryOp(op, operand)
         return self.primary()
 
+
     def factor(self):
         return self.unary()
+
 
     # <term>  ::=  <factor> ( ('*'|'/') <factor> )*
     def term(self):
@@ -40,6 +75,7 @@ class Parser:
             expr = BinOp(op, expr, right)
         return expr
 
+
     # <expr>  ::=  <term> ( ('+'|'-') <term> )*
     def expr(self):
         expr = self.term()
@@ -49,12 +85,7 @@ class Parser:
             expr = BinOp(op, expr, right)
         return expr
 
+
     def parse(self):
         ast = self.expr()
         return ast
-
-    def match(self, TOK_PLUS):
-        pass
-
-    def previous_token(self):
-        pass

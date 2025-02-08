@@ -20,3 +20,4 @@ if __name__ == '__main__':
 
         print("PARSED AST:")
         ast = Parser(toks).parse()
+        print(ast)

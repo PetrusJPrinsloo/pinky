@@ -1,4 +1,4 @@
-from tokens import Token
+from tokens import *
 
 class Expr:
     """
@@ -18,7 +18,7 @@ class Integer(Expr):
         assert isinstance(value, int), value
         self.value = value
     def __repr__(self):
-        return f'Integer[{self.value})]'
+        return f'Integer({self.value})'
 
 class Float(Expr):
     """
@@ -28,7 +28,7 @@ class Float(Expr):
         assert isinstance(value, float), value
         self.value = value
     def __repr__(self):
-        return f'Float[{self.value})]'
+        return f'Float({self.value})'
 
 class UnOp(Expr):
     """
@@ -40,7 +40,7 @@ class UnOp(Expr):
         self.op = op
         self.operand = operand
     def __repr__(self):
-        return f'UnOp[{self.op.lexeme!r}, {self.operand}]'
+        return f'UnOp({self.op.lexeme!r}, {self.operand})'
 
 
 class BinOp(Expr):
@@ -55,7 +55,7 @@ class BinOp(Expr):
         self.left = left
         self.right = right
     def __repr__(self):
-        return f'BinOp[{self.op.lexeme!r}, {self.left}, {self.right}]'
+        return f'BinOp({self.op.lexeme!r}, {self.left}, {self.right})'
 
 class Grouping(Expr):
     """
@@ -65,7 +65,7 @@ class Grouping(Expr):
         assert isinstance(value, Expr), value
         self.value = value
     def __repr__(self):
-        return f'Grouping[{self.value}]'
+        return f'Grouping({self.value})'
 
 class While(Stmt):
     pass

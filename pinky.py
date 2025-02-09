@@ -1,23 +1,31 @@
 import sys
-
-from parser import Parser
+from utils import *
 from tokens import *
 from lexer import *
+from parser import *
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        raise SystemExit("Usage: pinky <filename>")
+        raise SystemExit('Usage: python3 pinky.py <filename>')
     filename = sys.argv[1]
-    print(filename)
 
     with open(filename) as file:
         source = file.read()
 
-        print("LEXER:")
-        toks = Lexer(source).tokenize()
-        for tok in toks:
-            print(tok)
+        print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
+        print(f'{Colors.GREEN}SOURCE:{Colors.WHITE}')
+        print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
+        print(source)
 
-        print("PARSED AST:")
-        ast = Parser(toks).parse()
-        print(ast)
+        print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
+        print(f'{Colors.GREEN}TOKENS:{Colors.WHITE}')
+        print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
+        tokens = Lexer(source).tokenize()
+        for tok in tokens: print(tok)
+
+        print()
+        print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
+        print(f'{Colors.GREEN}AST:{Colors.WHITE}')
+        print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
+        ast = Parser(tokens).parse()
+        print_pretty_ast(ast)

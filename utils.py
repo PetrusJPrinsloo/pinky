@@ -1,3 +1,5 @@
+import sys
+
 def print_pretty_ast(ast_text):
     i = 0
     newline = False
@@ -19,6 +21,14 @@ def print_pretty_ast(ast_text):
                 print(' ' * i, end='')
             print(ch, end='')
             newline = False
+
+def parse_error(message, lineno):
+    print(f'{Colors.RED}[Line {lineno}]: {message}{Colors.WHITE}')
+    sys.exit(1)
+
+def lexing_error(message, lineno):
+    print(f'{Colors.RED}[Line {lineno}]: {message}{Colors.WHITE}')
+    sys.exit(1)
 
 
 class Colors:

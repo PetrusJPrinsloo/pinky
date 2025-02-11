@@ -40,10 +40,20 @@ class Parser:
         self.curr = self.curr + 1  # If it is a match, we return True and also comsume that token
         return True
 
-    # <primary>  ::=  <integer> | <float> | '(' <expr> ')'
+    # <primary>  ::=  <integer>
+    #              | <float>
+    #              | <bool>
+    #              | <string>
+    #              | '(' <expr> ')'
     def primary(self):
         if self.match(TOK_INTEGER): return Integer(int(self.previous_token().lexeme), self.previous_token().line)
-        if self.match(TOK_FLOAT): return Float(float(self.previous_token().lexeme), self.previous_token().line)
+        elif self.match(TOK_FLOAT): return Float(float(self.previous_token().lexeme), self.previous_token().line)
+        elif self.match(TOK_TRUE):
+            return Bool(True, self.previous_token().line)
+        elif self.match(TOK_FALSE):
+            return Bool(False, self.previous_token().line)
+        if self.match(TOK_STRING):
+            return String(str(self.previous_token().lexeme[1:-1]),self.previous_token().line)
         if self.match(TOK_LPAREN):
             expr = self.expr()
             if not self.match(TOK_RPAREN):

@@ -77,6 +77,28 @@ class Grouping(Expr):
     def __repr__(self):
         return f'Grouping({self.value})'
 
+class Bool(Expr):
+    """
+    Example: true, false
+    """
+    def __init__(self, value, line):
+        assert isinstance(value, bool), value
+        self.value = value
+        self.line = line
+    def __repr__(self):
+        return f'Bool[{self.value}]'
+
+class String(Expr):
+    """
+    Example: "This is a string"
+    """
+    def __init__(self, value, line):
+        assert isinstance(value, str), value
+        self.value = value
+        self.line = line
+    def __repr__(self):
+        return f'String[{self.value}]'
+
 class While(Stmt):
     pass
 

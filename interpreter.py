@@ -16,6 +16,9 @@ class Interpreter:
         elif isinstance(node, Float):
             return TYPE_NUMBER, float(node.value)
 
+        elif isinstance(node, Bool):
+            return TYPE_BOOL, node.value
+
         elif isinstance(node, Grouping):
             return self.interpret(node.value)
 
@@ -30,16 +33,46 @@ class Interpreter:
                 else:
                     runtime_error(f'Unsupported operator {node.op.lexeme!r} between {lefttype} and {righttype}.', node.op.line)
             elif node.op.token_type == TOK_MINUS:
-                return leftval - rightval
+                if lefttype == TYPE_NUMBER and righttype == TYPE_NUMBER:
+                    return TYPE_NUMBER, leftval - rightval
+                else:
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} between {lefttype} and {righttype}.', node.op.line)
             elif node.op.token_type == TOK_STAR:
-                return leftval * rightval
+                if lefttype == TYPE_NUMBER and righttype == TYPE_NUMBER:
+                    return TYPE_NUMBER, leftval * rightval
+                else:
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} between {lefttype} and {righttype}.', node.op.line)
             elif node.op.token_type == TOK_SLASH:
-                return leftval / rightval
+                if lefttype == TYPE_NUMBER and righttype == TYPE_NUMBER:
+                    return TYPE_NUMBER, leftval / rightval
+                else:
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} between {lefttype} and {righttype}.', node.op.line)
+            elif node.op.token_type == TOK_MOD:
+                if lefttype == TYPE_NUMBER and righttype == TYPE_NUMBER:
+                    return TYPE_NUMBER, leftval % rightval
+                else:
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} between {lefttype} and {righttype}.', node.op.line)
+            elif node.op.token_type == TOK_CARET:
+                if lefttype == TYPE_NUMBER and righttype == TYPE_NUMBER:
+                    return TYPE_NUMBER, leftval ** rightval
+                else:
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} between {lefttype} and {righttype}.', node.op.line)
 
         elif isinstance(node, UnOp):
+
+            operandtype, operandval = self.interpret(node.operand)
             if node.op.token_type == TOK_PLUS:
-                return +self.interpret(node.operand)
+                if operandtype == TYPE_NUMBER:
+                    return TYPE_NUMBER, +operandval
+                else:
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} for {operandtype}.', node.op.line)
             elif node.op.token_type == TOK_MINUS:
-                return -self.interpret(node.operand)
-            # elif node.op.token_type == TOK_NOT:
-            #     return not self.interpret(node.operand)
+                if operandtype == TYPE_NUMBER:
+                    return TYPE_NUMBER, -operandval
+                else:
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} for {operandtype}.', node.op.line)
+            elif node.op.token_type == TOK_NOT:
+                if operandtype == TYPE_BOOL:
+                    return TYPE_NUMBER, not operandval
+                else:
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} for {operandtype}.', node.op.line)

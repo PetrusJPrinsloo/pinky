@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Fixed bug where string was detected as a TOK_QUESTION by lexer">
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Adding comparisons WIP">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/simpleexpression.pinky" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/simpleexpression.pinky" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +120,7 @@
       <workItem from="1739002354205" duration="14891000" />
       <workItem from="1739299768924" duration="1173000" />
       <workItem from="1739354223086" duration="2597000" />
-      <workItem from="1739436525935" duration="9875000" />
+      <workItem from="1739436525935" duration="10144000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -236,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739454331109</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Adding comparisons WIP">
+      <option name="closed" value="true" />
+      <created>1739466076929</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1739466076929</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +263,8 @@
     <MESSAGE value="more work on type support, this time in interpreter. WIP on how to handle different types." />
     <MESSAGE value="Added bool types and more type checking for arithmatic operations." />
     <MESSAGE value="Fixed bug where string was detected as a TOK_QUESTION by lexer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug where string was detected as a TOK_QUESTION by lexer" />
+    <MESSAGE value="Adding comparisons WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding comparisons WIP" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

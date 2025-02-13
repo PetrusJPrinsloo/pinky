@@ -1,4 +1,9 @@
 from model import *
+from utils import *
+
+TYPE_NUMBER = 'TYPE_NUMBER'
+TYPE_STRING = 'TYPE_STRING'
+TYPE_BOOL = 'TYPE_BOOL'
 
 class Interpreter:
     def __init__(self):
@@ -6,23 +11,30 @@ class Interpreter:
 
     def interpret(self, node):
         if isinstance(node, Integer):
-            return float(node.value)
+            return TYPE_NUMBER, float(node.value)
 
         elif isinstance(node, Float):
-            return float(node.value)
+            return TYPE_NUMBER, float(node.value)
 
         elif isinstance(node, Grouping):
             return self.interpret(node.value)
 
         elif isinstance(node, BinOp):
+            lefttype, leftval = self.interpret(node.left)
+            righttype, rightval = self.interpret(node.right)
             if node.op.token_type == TOK_PLUS:
-                return self.interpret(node.left) + self.interpret(node.right)
+                if lefttype == TYPE_NUMBER and righttype == TYPE_NUMBER:
+                    return leftval + rightval
+                elif lefttype == TYPE_STRING and righttype == TYPE_STRING:
+                    return TYPE_STRING, str(leftval) + str(rightval)
+                else:
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} between {lefttype} and {righttype}.', node.op.line)
             elif node.op.token_type == TOK_MINUS:
-                return self.interpret(node.left) - self.interpret(node.right)
+                return leftval - rightval
             elif node.op.token_type == TOK_STAR:
-                return self.interpret(node.left) * self.interpret(node.right)
+                return leftval * rightval
             elif node.op.token_type == TOK_SLASH:
-                return self.interpret(node.left) / self.interpret(node.right)
+                return leftval / rightval
 
         elif isinstance(node, UnOp):
             if node.op.token_type == TOK_PLUS:

@@ -57,7 +57,7 @@ class Lexer:
         if self.curr >= len(self.source):
             raise lexing_error(f'Unterminated string', self.line)
         self.advance()
-        self.add_token(TOK_QUESTION)
+        self.add_token(TOK_STRING)
 
 
     def handle_identifier_and_keywords(self):

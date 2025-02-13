@@ -19,6 +19,9 @@ class Interpreter:
         elif isinstance(node, Bool):
             return TYPE_BOOL, node.value
 
+        elif isinstance(node, String):
+            return TYPE_STRING, str(node.value)
+
         elif isinstance(node, Grouping):
             return self.interpret(node.value)
 
@@ -27,7 +30,7 @@ class Interpreter:
             righttype, rightval = self.interpret(node.right)
             if node.op.token_type == TOK_PLUS:
                 if lefttype == TYPE_NUMBER and righttype == TYPE_NUMBER:
-                    return leftval + rightval
+                    return TYPE_NUMBER, leftval + rightval
                 elif lefttype == TYPE_STRING and righttype == TYPE_STRING:
                     return TYPE_STRING, str(leftval) + str(rightval)
                 else:
@@ -59,20 +62,19 @@ class Interpreter:
                     runtime_error(f'Unsupported operator {node.op.lexeme!r} between {lefttype} and {righttype}.', node.op.line)
 
         elif isinstance(node, UnOp):
-
             operandtype, operandval = self.interpret(node.operand)
             if node.op.token_type == TOK_PLUS:
                 if operandtype == TYPE_NUMBER:
                     return TYPE_NUMBER, +operandval
                 else:
-                    runtime_error(f'Unsupported operator {node.op.lexeme!r} for {operandtype}.', node.op.line)
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} with {operandtype}.', node.op.line)
             elif node.op.token_type == TOK_MINUS:
                 if operandtype == TYPE_NUMBER:
                     return TYPE_NUMBER, -operandval
                 else:
-                    runtime_error(f'Unsupported operator {node.op.lexeme!r} for {operandtype}.', node.op.line)
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} with {operandtype}.', node.op.line)
             elif node.op.token_type == TOK_NOT:
                 if operandtype == TYPE_BOOL:
-                    return TYPE_NUMBER, not operandval
+                    return TYPE_BOOL, not operandval
                 else:
-                    runtime_error(f'Unsupported operator {node.op.lexeme!r} for {operandtype}.', node.op.line)
+                    runtime_error(f'Unsupported operator {node.op.lexeme!r} with {operandtype}.', node.op.line)

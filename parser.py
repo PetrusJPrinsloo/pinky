@@ -61,30 +61,38 @@ class Parser:
             else:
                 return Grouping(expr, self.previous_token().line)
 
-    # <unary>  ::=  ('+'|'-'|'~')* <unary>  |  <primary>
+    # <unary>  ::=  ('+'|'-'|'~')* <exponent>
     def unary(self):
         if self.match(TOK_NOT) or self.match(TOK_MINUS) or self.match(TOK_PLUS):
             op = self.previous_token()
-            operand = self.unary()
+            operand = self.exponent()
             return UnOp(op, operand, self.previous_token().line)
-        return self.primary()
+        return self.exponent()
 
     # <exponent> ::= <primary> ( "^" <primary> )*
     def exponent(self):
-        # TODO:
-        pass
+        expr = self.primary()
+        if self.match(TOK_CARET):
+            op = self.previous_token()
+            right = self.primary()
+            expr = BinOp(op, expr, right, self.previous_token().line)
+        return expr
 
     # <modulo> ::= <unary> ( "%" <unary> )*
     def modulo(self):
-        # TODO:
-        pass
-
-    # <multiplication>  ::=  <unary> ( ('*'|'/') <unary> )*
-    def multiplication(self):
         expr = self.unary()
-        while self.match(TOK_STAR) or self.match(TOK_SLASH):
+        while self.match(TOK_MOD):
             op = self.previous_token()
             right = self.unary()
+            expr = BinOp(op, expr, right, self.previous_token().line)
+        return expr
+
+    # <multiplication>  ::=  <modulo> ( ('*'|'/') <modulo> )*
+    def multiplication(self):
+        expr = self.modulo()
+        while self.match(TOK_STAR) or self.match(TOK_SLASH):
+            op = self.previous_token()
+            right = self.modulo()
             expr = BinOp(op, expr, right, self.previous_token().line)
         return expr
 
@@ -99,13 +107,21 @@ class Parser:
 
     # <comparison> ::= <addition> (( ">" | ">=" | "<" | "<=" ) <addition>)*
     def comparison(self):
-        # TODO:
-        pass
+        expr = self.addition()
+        while self.match(TOK_GT) or self.match(TOK_GE) or self.match(TOK_LT) or self.match(TOK_LE):
+            op = self.previous_token()
+            right = self.addition()
+            expr = BinOp(op, expr, right, self.previous_token().line)
+        return expr
 
     # <equality>  ::=  <comparison> ( ( "~=" | "==" ) <comparison> )*
     def equality(self):
-        # TODO:
-        pass
+        expr = self.comparison()
+        while self.match(TOK_NE) or self.match(TOK_EQEQ):
+            op = self.previous_token()
+            right = self.comparison()
+            expr = BinOp(op, expr, right, self.previous_token().line)
+        return expr
 
     def expr(self):
         #################################################################

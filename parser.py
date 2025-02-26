@@ -1,6 +1,7 @@
+from utils import *
 from tokens import *
 from model import *
-from utils import *
+
 
 class Parser:
     def __init__(self, tokens):
@@ -41,42 +42,45 @@ class Parser:
         return True
 
     # <primary>  ::=  <integer>
-    #              | <float>
-    #              | <bool>
-    #              | <string>
+    #              |  <float>
+    #              |  <bool>
+    #              |  <string>
     #              | '(' <expr> ')'
     def primary(self):
-        if self.match(TOK_INTEGER): return Integer(int(self.previous_token().lexeme), self.previous_token().line)
-        elif self.match(TOK_FLOAT): return Float(float(self.previous_token().lexeme), self.previous_token().line)
+        if self.match(TOK_INTEGER):
+            return Integer(int(self.previous_token().lexeme), line=self.previous_token().line)
+        elif self.match(TOK_FLOAT):
+            return Float(float(self.previous_token().lexeme), line=self.previous_token().line)
         elif self.match(TOK_TRUE):
-            return Bool(True, self.previous_token().line)
+            return Bool(True, line=self.previous_token().line)
         elif self.match(TOK_FALSE):
-            return Bool(False, self.previous_token().line)
-        if self.match(TOK_STRING):
-            return String(str(self.previous_token().lexeme[1:-1]),self.previous_token().line)
-        if self.match(TOK_LPAREN):
+            return Bool(False, line=self.previous_token().line)
+        elif self.match(TOK_STRING):
+            return String(str(self.previous_token().lexeme[1:-1]),
+                          line=self.previous_token().line)  # Remove the quotes at the beginning and at the end of the lexeme
+        elif self.match(TOK_LPAREN):
             expr = self.expr()
-            if not self.match(TOK_RPAREN):
-                raise parse_error(f'Error: ")" expected.', self.peek().line)
+            if (not self.match(TOK_RPAREN)):
+                parse_error(f'Error: ")" expected.', self.previous_token().line)
             else:
-                return Grouping(expr, self.previous_token().line)
+                return Grouping(expr, line=self.previous_token().line)
+
+    # <exponent> ::= <primary> ( "^" <exponent> )*
+    def exponent(self):
+        expr = self.primary()
+        while self.match(TOK_CARET):
+            op = self.previous_token()
+            right = self.exponent()
+            expr = BinOp(op, expr, right, line=op.line)
+        return expr
 
     # <unary>  ::=  ('+'|'-'|'~')* <exponent>
     def unary(self):
         if self.match(TOK_NOT) or self.match(TOK_MINUS) or self.match(TOK_PLUS):
             op = self.previous_token()
-            operand = self.exponent()
-            return UnOp(op, operand, self.previous_token().line)
+            operand = self.unary()
+            return UnOp(op, operand, line=op.line)
         return self.exponent()
-
-    # <exponent> ::= <primary> ( "^" <primary> )*
-    def exponent(self):
-        expr = self.primary()
-        if self.match(TOK_CARET):
-            op = self.previous_token()
-            right = self.primary()
-            expr = BinOp(op, expr, right, self.previous_token().line)
-        return expr
 
     # <modulo> ::= <unary> ( "%" <unary> )*
     def modulo(self):
@@ -84,7 +88,7 @@ class Parser:
         while self.match(TOK_MOD):
             op = self.previous_token()
             right = self.unary()
-            expr = BinOp(op, expr, right, self.previous_token().line)
+            expr = BinOp(op, expr, right, line=op.line)
         return expr
 
     # <multiplication>  ::=  <modulo> ( ('*'|'/') <modulo> )*
@@ -93,7 +97,7 @@ class Parser:
         while self.match(TOK_STAR) or self.match(TOK_SLASH):
             op = self.previous_token()
             right = self.modulo()
-            expr = BinOp(op, expr, right, self.previous_token().line)
+            expr = BinOp(op, expr, right, line=op.line)
         return expr
 
     # <addition>  ::=  <multiplication> ( ('+'|'-') <multiplication> )*
@@ -102,7 +106,7 @@ class Parser:
         while self.match(TOK_PLUS) or self.match(TOK_MINUS):
             op = self.previous_token()
             right = self.multiplication()
-            expr = BinOp(op, expr, right, self.previous_token().line)
+            expr = BinOp(op, expr, right, line=op.line)
         return expr
 
     # <comparison> ::= <addition> (( ">" | ">=" | "<" | "<=" ) <addition>)*
@@ -111,7 +115,7 @@ class Parser:
         while self.match(TOK_GT) or self.match(TOK_GE) or self.match(TOK_LT) or self.match(TOK_LE):
             op = self.previous_token()
             right = self.addition()
-            expr = BinOp(op, expr, right, self.previous_token().line)
+            expr = BinOp(op, expr, right, line=op.line)
         return expr
 
     # <equality>  ::=  <comparison> ( ( "~=" | "==" ) <comparison> )*
@@ -120,24 +124,10 @@ class Parser:
         while self.match(TOK_NE) or self.match(TOK_EQEQ):
             op = self.previous_token()
             right = self.comparison()
-            expr = BinOp(op, expr, right, self.previous_token().line)
+            expr = BinOp(op, expr, right, line=op.line)
         return expr
 
     def expr(self):
-        #################################################################
-        # TODO:
-        # Your goal is to change the parser to allow expressions with
-        # comparison (>, <, >=, <=), equality (==, ~=), % and ^.
-        # Starting at expr(), the order of calls is:
-        # 1. equality()
-        # 2. comparison()
-        # 3. addition()
-        # 4. multiplication()
-        # 5. modulo()
-        # 6. unary()
-        # 7. exponent()
-        # 8. primary()
-        #################################################################
         return self.equality()
 
     def parse(self):

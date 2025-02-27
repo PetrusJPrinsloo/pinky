@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="added boolexpr model">
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="added logical or">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
     </list>
@@ -124,7 +124,7 @@
       <workItem from="1739543938142" duration="3729000" />
       <workItem from="1740298191970" duration="9734000" />
       <workItem from="1740369253560" duration="1134000" />
-      <workItem from="1740551886728" duration="2195000" />
+      <workItem from="1740551886728" duration="5181000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -278,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740634273299</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added logical or">
+      <option name="closed" value="true" />
+      <created>1740635045956</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1740635045956</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +312,8 @@
     <MESSAGE value="Improve expressions to support boolean operations, mod and exponents" />
     <MESSAGE value="use the line number stored on op." />
     <MESSAGE value="added boolexpr model" />
-    <option name="LAST_COMMIT_MESSAGE" value="added boolexpr model" />
+    <MESSAGE value="added logical or" />
+    <option name="LAST_COMMIT_MESSAGE" value="added logical or" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

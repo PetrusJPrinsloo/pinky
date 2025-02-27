@@ -127,9 +127,22 @@ class Parser:
             expr = BinOp(op, expr, right, line=op.line)
         return expr
 
+
+    def logical_and(self):
+        pass
+
+    # <logical_or> = := <logical_and> ( "or" <logical_and> )*
+    def logical_or(self):
+        expr = self.logical_and()
+        while self.match(TOK_OR):
+            op = self.previous_token()
+            right = self.logical_and()
+            expr = LogicalOp(op, expr, right, line=op.line)
+
     def expr(self):
         return self.equality()
 
     def parse(self):
         ast = self.expr()
         return ast
+

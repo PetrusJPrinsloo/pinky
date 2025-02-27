@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="use the line number stored on op.">
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="added boolexpr model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +124,7 @@
       <workItem from="1739543938142" duration="3729000" />
       <workItem from="1740298191970" duration="9734000" />
       <workItem from="1740369253560" duration="1134000" />
-      <workItem from="1740551886728" duration="1436000" />
+      <workItem from="1740551886728" duration="2195000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -270,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740552368923</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added boolexpr model">
+      <option name="closed" value="true" />
+      <created>1740634273299</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1740634273299</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +303,8 @@
     <MESSAGE value="Add simple README.md" />
     <MESSAGE value="Improve expressions to support boolean operations, mod and exponents" />
     <MESSAGE value="use the line number stored on op." />
-    <option name="LAST_COMMIT_MESSAGE" value="use the line number stored on op." />
+    <MESSAGE value="added boolexpr model" />
+    <option name="LAST_COMMIT_MESSAGE" value="added boolexpr model" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

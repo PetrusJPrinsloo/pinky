@@ -59,7 +59,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in tests-expr.py">
+  <component name="RunManager" selected="Python.pinky">
     <configuration name="run" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="run" workingDirectory="" arguments="">
         <envs />
@@ -112,9 +112,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pinky" />
         <item itemvalue="Python tests.Python tests in tests-expr.py" />
         <item itemvalue="Makefile Target.run" />
-        <item itemvalue="Python.pinky" />
       </list>
     </recent_temporary>
   </component>

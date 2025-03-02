@@ -133,7 +133,7 @@ class Parser:
         while self.match(TOK_AND):
             op = self.previous_token()
             right = self.equality()
-            expr = BinOp(op, expr, right, line=op.line)
+            expr = LogicalOp(op, expr, right, line=op.line)
         return expr
 
     # <logical_or> = := <logical_and> ( "or" <logical_and> )*

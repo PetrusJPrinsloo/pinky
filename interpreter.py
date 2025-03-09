@@ -131,3 +131,11 @@ class Interpreter:
                 if not leftval:
                     return (lefttype, leftval)
             return self.interpret(node.right)
+
+        elif isinstance(node, Stmts):
+            for stmt in node.stmts:
+                self.interpret(stmt)
+
+        elif isinstance(node, PrintStmt):
+            exprtype, value = self.interpret(node.value)
+            print(value)

@@ -1,4 +1,5 @@
 -- test multiple statements in one file
+print("Hello World!")
 print 1 + 2
 print 3 * 2 ^ 2
 print("test")

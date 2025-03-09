@@ -24,14 +24,16 @@ if __name__ == '__main__':
         tokens = Lexer(source).tokenize()
         for tok in tokens: print(tok)
 
+        print()
         print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
         print(f'{Colors.GREEN}AST:{Colors.WHITE}')
         print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
         ast = Parser(tokens).parse()
         print_pretty_ast(ast)
 
+        print()
         print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
-        print(f'{Colors.GREEN}INTERPRETER RESULT:{Colors.WHITE}')
+        print(f'{Colors.GREEN}INTERPRETER:{Colors.WHITE}')
         print(f'{Colors.GREEN}***************************************{Colors.WHITE}')
         interpreter = Interpreter()
         interpreter.interpret(ast)

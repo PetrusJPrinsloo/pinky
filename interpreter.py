@@ -1,3 +1,5 @@
+from ftplib import print_line
+
 from model import *
 from utils import *
 
@@ -139,3 +141,7 @@ class Interpreter:
         elif isinstance(node, PrintStmt):
             exprtype, value = self.interpret(node.value)
             print(value)
+
+        elif isinstance(node, PrintlnStmt):
+            exprtype, value = self.interpret(node.value)
+            print(value + "/n")

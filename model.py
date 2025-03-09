@@ -183,3 +183,17 @@ class PrintStmt(Stmt):
 
     def __repr__(self):
         return f'PrintStmt({self.value})'
+
+
+class PrintlnStmt(Stmt):
+    """
+    Example: print value and terminate it with a new line
+    """
+
+    def __init__(self, value, line):
+        assert isinstance(value, Expr), value
+        self.value = value
+        self.line = line
+
+    def __repr__(self):
+        return f'PrintlnStmt({self.value})'

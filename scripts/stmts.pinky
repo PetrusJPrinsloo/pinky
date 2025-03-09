@@ -1,5 +1,8 @@
 -- test multiple statements in one file
-print("Hello World!")
+
+print "Hello World!"
 print 1 + 2
-print 3 * 2 ^ 2
-print("test")
+print 3 * 2 ^ 2 + (3 * 7)
+print "test"
+println "another hello but with a new line!"
+println "End of file"

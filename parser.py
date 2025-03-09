@@ -145,13 +145,44 @@ class Parser:
             expr = LogicalOp(op, expr, right, line=op.line)
         return expr
 
+    def if_stmt(self):
+        pass
+
+    def while_stmt(self):
+        pass
+
+    def for_stmt(self):
+        pass
+
+    # <print_stmt>  ::=  "print" <expr>
+    def print_stmt(self):
+        if self.match(TOK_PRINT):
+            val = self.expr()
+            return PrintStmt(val, line=self.previous_token().line)
+
+
+    def func_decl(self):
+        pass
+
     def expr(self):
         return self.logical_or()
 
     def stmt(self):
-        # Todo:
-        # parse print, if, while, for, assignment, function call, etc.
-        pass
+        # Predictive parsing, where the next token predicts what is the next statement
+        # How far do we lookahead? Different algorithms: LL(1), LALR(1), LR(1), LR(2)
+        if self.peek().token_type == TOK_PRINT:
+            return self.print_stmt()
+        elif self.peek().token_type == TOK_IF:
+            return self.if_stmt()
+        elif self.peek().token_type == TOK_WHILE:
+            return self.while_stmt()
+        elif self.peek().token_type == TOK_FOR:
+            return self.for_stmt()
+        elif self.peek().token_type == TOK_FUNC:
+            return self.func_decl()
+        else:
+            # TODO: What does *else* means?
+            pass
 
     def stmts(self):
         stmts = []

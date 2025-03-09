@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Also added test and fixed bug that the program would die if no newline on last line of code. (this was done in previous commit)">
-      <change afterPath="$PROJECT_DIR$/scripts/stmts.pinky" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests-stmts.py" afterDir="false" />
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Start of parsing statements WIP.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pinky.py" beforeDir="false" afterPath="$PROJECT_DIR$/pinky.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/stmts.pinky" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/stmts.pinky" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,7 @@
     "Python tests.Python tests for tests-expr.TestExpressions.executor": "Run",
     "Python tests.Python tests for tests-expr.TestExpressions.test_number_primary.executor": "Run",
     "Python tests.Python tests in tests-expr.py.executor": "Run",
-    "Python.pinky.executor": "Run",
+    "Python.pinky.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -64,7 +62,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in tests-expr.py">
+  <component name="RunManager" selected="Python.pinky">
     <configuration name="run" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="run" workingDirectory="" arguments="">
         <envs />
@@ -86,7 +84,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pinky.py" />
-      <option name="PARAMETERS" value="scripts/binaryunary.pinky" />
+      <option name="PARAMETERS" value="scripts/stmts.pinky" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -117,8 +115,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests in tests-expr.py" />
         <item itemvalue="Python.pinky" />
+        <item itemvalue="Python tests.Python tests in tests-expr.py" />
         <item itemvalue="Makefile Target.run" />
       </list>
     </recent_temporary>
@@ -155,7 +153,8 @@
       <workItem from="1740369253560" duration="1134000" />
       <workItem from="1740551886728" duration="7755000" />
       <workItem from="1740825821992" duration="8645000" />
-      <workItem from="1741242522813" duration="5949000" />
+      <workItem from="1741242522813" duration="11216000" />
+      <workItem from="1741501665717" duration="3590000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -349,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740915251622</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Start of parsing statements WIP.">
+      <option name="closed" value="true" />
+      <created>1741328650329</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1741328650329</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,7 +386,8 @@
     <MESSAGE value="parsing logical &quot;and&quot; and logical &quot;or&quot;" />
     <MESSAGE value="Interpreter support for logical &quot;and&quot; and logical &quot;or&quot;" />
     <MESSAGE value="Also added test and fixed bug that the program would die if no newline on last line of code. (this was done in previous commit)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Also added test and fixed bug that the program would die if no newline on last line of code. (this was done in previous commit)" />
+    <MESSAGE value="Start of parsing statements WIP." />
+    <option name="LAST_COMMIT_MESSAGE" value="Start of parsing statements WIP." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -398,7 +406,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/pinky$.coverage" NAME=" Coverage Results" MODIFIED="1740915845440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pinky$pinky.coverage" NAME="pinky Coverage Results" MODIFIED="1740915840137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pinky$.coverage" NAME=" Coverage Results" MODIFIED="1741506882128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pinky$pinky.coverage" NAME="pinky Coverage Results" MODIFIED="1741507168680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

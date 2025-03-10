@@ -176,24 +176,12 @@ class PrintStmt(Stmt):
     Example: print value
     """
 
-    def __init__(self, value, line):
+    def __init__(self, value, end, line):
         assert isinstance(value, Expr), value
         self.value = value
+        self.end = end
         self.line = line
 
     def __repr__(self):
-        return f'PrintStmt({self.value})'
+        return f'PrintStmt({self.value}, end={self.end!r})'
 
-
-class PrintlnStmt(Stmt):
-    """
-    Example: print value and terminate it with a new line
-    """
-
-    def __init__(self, value, line):
-        assert isinstance(value, Expr), value
-        self.value = value
-        self.line = line
-
-    def __repr__(self):
-        return f'PrintlnStmt({self.value})'

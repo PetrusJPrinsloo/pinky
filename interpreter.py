@@ -1,7 +1,6 @@
-from ftplib import print_line
-
 from model import *
 from utils import *
+import codecs
 
 TYPE_NUMBER = 'TYPE_NUMBER'
 TYPE_STRING = 'TYPE_STRING'
@@ -139,9 +138,5 @@ class Interpreter:
                 self.interpret(stmt)
 
         elif isinstance(node, PrintStmt):
-            exprtype, value = self.interpret(node.value)
-            print(value)
-
-        elif isinstance(node, PrintlnStmt):
-            exprtype, value = self.interpret(node.value)
-            print(value + "/n")
+            exprtype, exprval = self.interpret(node.value)
+            print(codecs.escape_decode(bytes(str(exprval), "utf-8"))[0].decode("utf-8"), end=node.end)

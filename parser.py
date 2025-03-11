@@ -145,8 +145,19 @@ class Parser:
             expr = LogicalOp(op, expr, right, line=op.line)
         return expr
 
+    # <if_stmt>  ::=  "if" <expr> "then" <stmts> ( "else" <stmts> )? "end"
     def if_stmt(self):
-        pass
+        self.expect(TOK_IF)
+        test = self.expr()
+        self.expect(TOK_THEN)
+        then_stmts = self.stmts()
+        if self.is_next(TOK_ELSE):
+            self.advance()  # consume the else
+            else_stmts = self.stmts()
+        else:
+            else_stmts = None
+        self.expect(TOK_END)
+        return IfStmt(test, then_stmts, else_stmts, line=self.previous_token().line)
 
     def while_stmt(self):
         pass
@@ -188,7 +199,7 @@ class Parser:
 
     def stmts(self):
         stmts = []
-        while self.curr < len(self.tokens):
+        while self.curr < len(self.tokens) and not self.is_next(TOK_ELSE) and not self.is_next(TOK_END):
             stmt = self.stmt()
             stmts.append(stmt)
         return Stmts(stmts, line=self.previous_token().line)

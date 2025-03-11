@@ -6,3 +6,9 @@ print 3 * 2 ^ 2 + (3 * 7)
 print "test"
 println "another hello but with a new line!"
 println "End of file"
+
+if 1 > 2 then
+    print "yes it's bigger"
+else
+    print "no, it's smaller"
+end

@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Added if statements.">
-      <change afterPath="$PROJECT_DIR$/scripts/assignment.pinky" afterDir="false" />
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Adding assignment and program state WIP">
+      <change afterPath="$PROJECT_DIR$/state.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/stmts.pinky" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/stmts.pinky" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pinky.py" beforeDir="false" afterPath="$PROJECT_DIR$/pinky.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +166,7 @@
       <workItem from="1741672946176" duration="3201000" />
       <workItem from="1741720360588" duration="644000" />
       <workItem from="1741757715390" duration="3940000" />
+      <workItem from="1742018091100" duration="4562000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -443,15 +443,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added if statements." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/interpreter.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="self.peek()" language="Python" />

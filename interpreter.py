@@ -3,6 +3,7 @@ from state import Environment
 from utils import *
 import codecs
 
+
 TYPE_NUMBER = 'TYPE_NUMBER'
 TYPE_STRING = 'TYPE_STRING'
 TYPE_BOOL = 'TYPE_BOOL'
@@ -28,10 +29,21 @@ class Interpreter:
             return self.interpret(node.value, env)
 
         elif isinstance(node, Identifier):
-            pass
+            val = env.get_var(node.name)
+            if val is None:
+                runtime_error(f'Undeclared identifier {node.name!r}', node.line)
+            if val[1] is None:
+                runtime_error(f'Uninitialized identifier {node.name!r}', node.line)
+            return val
+
 
         if isinstance(node, Assignment):
-            pass
+            """
+            Left := Right
+            """
+            righttype, rightval = self.interpret(node.right, env)
+            env.set_var(node.left.name, (righttype, rightval))
+
 
         elif isinstance(node, BinOp):
             lefttype, leftval = self.interpret(node.left, env)

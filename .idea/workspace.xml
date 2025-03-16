@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Adding assignment and program state WIP">
-      <change afterPath="$PROJECT_DIR$/state.py" afterDir="false" />
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Start creating variable scope.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/interpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pinky.py" beforeDir="false" afterPath="$PROJECT_DIR$/pinky.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/stmts.pinky" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/stmts.pinky" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +165,8 @@
       <workItem from="1741672946176" duration="3201000" />
       <workItem from="1741720360588" duration="644000" />
       <workItem from="1741757715390" duration="3940000" />
-      <workItem from="1742018091100" duration="4562000" />
+      <workItem from="1742018091100" duration="6135000" />
+      <workItem from="1742107162716" duration="5169000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -408,14 +408,21 @@
       <option name="project" value="LOCAL" />
       <updated>1741675550630</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Start creating variable scope.">
+      <option name="closed" value="true" />
+      <created>1742024700856</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1742024700856</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Working on parser, still need helper functions filled in." />
     <MESSAGE value="Filled helper functions of parser (not tested)" />
     <MESSAGE value="Finished getting parser working generating AST" />
     <MESSAGE value="Pretty printing information" />
@@ -440,7 +447,8 @@
     <MESSAGE value="Add println" />
     <MESSAGE value="Improve print so it supports escape characters" />
     <MESSAGE value="Added if statements." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added if statements." />
+    <MESSAGE value="Start creating variable scope." />
+    <option name="LAST_COMMIT_MESSAGE" value="Start creating variable scope." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -451,6 +459,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pinky$.coverage" NAME=" Coverage Results" MODIFIED="1741506882128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pinky$pinky.coverage" NAME="pinky Coverage Results" MODIFIED="1741760977226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pinky$pinky.coverage" NAME="pinky Coverage Results" MODIFIED="1742113041804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

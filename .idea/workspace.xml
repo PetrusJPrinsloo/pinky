@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Start creating variable scope.">
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Can now declare variables by assigning them a value. Can also use them in any expression or statement after they have a value.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/interpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/stmts.pinky" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/stmts.pinky" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/state.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +167,8 @@
       <workItem from="1741720360588" duration="644000" />
       <workItem from="1741757715390" duration="3940000" />
       <workItem from="1742018091100" duration="6135000" />
-      <workItem from="1742107162716" duration="5169000" />
+      <workItem from="1742107162716" duration="5861000" />
+      <workItem from="1742191604399" duration="2764000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -416,14 +418,21 @@
       <option name="project" value="LOCAL" />
       <updated>1742024700856</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Can now declare variables by assigning them a value. Can also use them in any expression or statement after they have a value.">
+      <option name="closed" value="true" />
+      <created>1742124784956</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1742124784956</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Filled helper functions of parser (not tested)" />
     <MESSAGE value="Finished getting parser working generating AST" />
     <MESSAGE value="Pretty printing information" />
     <MESSAGE value="Made things a little easier to read and added standard errors" />
@@ -448,7 +457,8 @@
     <MESSAGE value="Improve print so it supports escape characters" />
     <MESSAGE value="Added if statements." />
     <MESSAGE value="Start creating variable scope." />
-    <option name="LAST_COMMIT_MESSAGE" value="Start creating variable scope." />
+    <MESSAGE value="Can now declare variables by assigning them a value. Can also use them in any expression or statement after they have a value." />
+    <option name="LAST_COMMIT_MESSAGE" value="Can now declare variables by assigning them a value. Can also use them in any expression or statement after they have a value." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -459,6 +469,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pinky$.coverage" NAME=" Coverage Results" MODIFIED="1741506882128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pinky$pinky.coverage" NAME="pinky Coverage Results" MODIFIED="1742113041804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pinky$pinky.coverage" NAME="pinky Coverage Results" MODIFIED="1742194909772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

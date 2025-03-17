@@ -7,17 +7,16 @@ print "test"
 println "another hello but with a new line!"
 println "End of file"
 
-if 1 > 2 then
-    println "yes it's bigger"
-else
-    println "no, it's smaller"
-end
-
 x := 0
 x := x + 1
 
-println x
+println("The value of the global x is " + x)
 
-if x == 1 then
-    println "x is 1"
+if 5 ~= 2 then
+  y := x + 20
+  println("I have access to the local y = " + y)
+  println("I have also access to the global x = " + x)
+else
+  x := y
+  println("Error, no local variable " + y)
 end

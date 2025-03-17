@@ -29,19 +29,21 @@ class Interpreter:
             return self.interpret(node.value, env)
 
         elif isinstance(node, Identifier):
-            val = env.get_var(node.name)
-            if val is None:
+            value = env.get_var(node.name)
+            if value is None:
                 runtime_error(f'Undeclared identifier {node.name!r}', node.line)
-            if val[1] is None:
+            if value[1] is None:
                 runtime_error(f'Uninitialized identifier {node.name!r}', node.line)
-            return val
+            return value
 
 
         if isinstance(node, Assignment):
             """
             Left := Right
             """
+            # Evaluate the right-hand side expression
             righttype, rightval = self.interpret(node.right, env)
+            # Update the value of the left-hand side variable or create a new one
             env.set_var(node.left.name, (righttype, rightval))
 
 

@@ -202,6 +202,19 @@ class IfStmt(Stmt):
     def __repr__(self):
         return f'IfStmt({self.test}, then:{self.then_stmts}, else:{self.else_stmts})'
 
+class WhileStmt(Stmt):
+    """
+    while <expression> do <stmts> end
+    """
+    def __init__(self, test, do_stmts, line):
+        assert isinstance(test, Expr), test
+        assert isinstance(do_stmts, Stmts), do_stmts
+        self.test = test
+        self.do_stmts = do_stmts
+        self.line = line
+    def __repr__(self):
+        return f'IfStmt({self.test} do {self.do_stmts})'
+
 class Assignment(Stmt):
     """
     left := right

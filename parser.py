@@ -163,8 +163,14 @@ class Parser:
         self.expect(TOK_END)
         return IfStmt(test, then_stmts, else_stmts, line=self.previous_token().line)
 
+    # while_stmt ::= 'while' expr 'do' stmts 'end'
     def while_stmt(self):
-        pass
+        self.expect(TOK_WHILE)
+        test = self.expr()
+        self.expect(TOK_DO)
+        do_stmts = self.stmts()
+        self.expect(TOK_END)
+        return WhileStmt(test, do_stmts, line=self.previous_token().line)
 
     def for_stmt(self):
         pass

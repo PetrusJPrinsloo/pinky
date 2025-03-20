@@ -1,3 +1,4 @@
+# noinspection PyMethodFirstArgAssignment
 class Environment:
     def __init__(self, parent=None):
         self.vars = {}
@@ -15,6 +16,7 @@ class Environment:
                 self = self.parent  # Look in parent environments to see if variable is defined "above"
         return None
 
+    # noinspection PyMethodFirstArgAssignment
     def set_var(self, name, value):
         '''
         Store a value in the environment (dynamically updating an existing name or creating a new entry in the dictionary)

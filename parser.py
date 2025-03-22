@@ -172,15 +172,32 @@ class Parser:
         self.expect(TOK_END)
         return WhileStmt(test, do_stmts, line=self.previous_token().line)
 
-    def for_stmt(self):
+    def do_stmt(self):
         pass
+
+    # <for_stmt>  ::=  "for" <identifier> ":=" <start> "," <end> ("," <step>)? "do" <body_stmts> "end"
+    def for_stmt(self):
+        self.expect(TOK_FOR)
+        identifier = self.primary()
+        self.expect(TOK_ASSIGN)
+        start = self.expr()
+        self.expect(TOK_COMMA)
+        end = self.expr()
+        if self.is_next(TOK_COMMA):
+            self.advance()
+            step = self.expr()
+        else:
+            step = None
+        self.expect(TOK_DO)
+        body_stmts = self.stmts()
+        self.expect(TOK_END)
+        return ForStmt(identifier, start, end, step, body_stmts, line=self.previous_token().line)
 
     # <print_stmt>  ::=  ( "print" | "println" ) <expr>
     def print_stmt(self, end):
         if self.match(TOK_PRINT) or self.match(TOK_PRINTLN):
             val = self.expr()
             return PrintStmt(val, end, line=self.previous_token().line)
-
 
     def func_decl(self):
         pass
@@ -226,4 +243,3 @@ class Parser:
     def parse(self):
         ast = self.program()
         return ast
-

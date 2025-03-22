@@ -115,12 +115,15 @@ class Grouping(Expr):
 
 class Identifier(Expr):
     """Example: stuff, data, pi, return_val"""
+
     def __init__(self, name, line):
         isinstance(name, str), name
         self.name = name
         self.line = line
+
     def __repr__(self):
         return f'Identifier({self.name})'
+
 
 class Bool(Expr):
     """
@@ -168,8 +171,26 @@ class While(Stmt):
     pass
 
 
-class For:
-    pass
+class ForStmt(Stmt):
+    """
+    "for" <identifier> ":=" <start> "," <end> ("," <step>)? "do" <body_stmts> "end"
+    """
+    def __init__(self, ident, start, end, step, body_stmts, line):
+        assert isinstance(ident, Identifier), ident
+        assert isinstance(start, Expr), start
+        assert isinstance(end, Expr), end
+        assert isinstance(step, Expr) or step is None, step
+        assert isinstance(body_stmts, Stmts), body_stmts
+        self.ident = ident
+        self.start = start
+        self.end = end
+        self.step = step
+        self.body_stmts = body_stmts
+        self.line = line
+
+
+    def __repr__(self):
+        return f'ForStmt({self.ident}, {self.start}, {self.end}, {self.step}, {self.body_stmts})'
 
 
 class PrintStmt(Stmt):
@@ -191,6 +212,7 @@ class IfStmt(Stmt):
     """
     if <expression> then <then_stmts> (else <else_stmts>)? end
     """
+
     def __init__(self, test, then_stmts, else_stmts, line):
         assert isinstance(test, Expr), test
         assert isinstance(then_stmts, Stmts), then_stmts
@@ -199,32 +221,39 @@ class IfStmt(Stmt):
         self.then_stmts = then_stmts
         self.else_stmts = else_stmts
         self.line = line
+
     def __repr__(self):
         return f'IfStmt({self.test}, then:{self.then_stmts}, else:{self.else_stmts})'
+
 
 class WhileStmt(Stmt):
     """
     while <expression> do <stmts> end
     """
+
     def __init__(self, test, do_stmts, line):
         assert isinstance(test, Expr), test
         assert isinstance(do_stmts, Stmts), do_stmts
         self.test = test
         self.do_stmts = do_stmts
         self.line = line
+
     def __repr__(self):
         return f'IfStmt({self.test} do {self.do_stmts})'
+
 
 class Assignment(Stmt):
     """
     left := right
     x := 5 * (7 + 8)
     """
+
     def __init__(self, left, right, line):
         assert isinstance(left, Expr), left
         assert isinstance(right, Expr), right
         self.left = left
         self.right = right
         self.line = line
+
     def __repr__(self):
         return f'Assignment({self.left}, {self.right})'

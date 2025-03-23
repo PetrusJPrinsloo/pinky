@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Implement for loops">
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Cleaner boolean and number printing">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,10 +63,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scripts" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pinky">
+  <component name="RunManager" selected="Makefile Target.run">
     <configuration name="run" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="run" workingDirectory="" arguments="">
         <envs />
@@ -119,9 +120,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile Target.run" />
         <item itemvalue="Python.pinky" />
         <item itemvalue="Python tests.Python tests in tests-expr.py" />
-        <item itemvalue="Makefile Target.run" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +171,9 @@
       <workItem from="1742191604399" duration="2976000" />
       <workItem from="1742279484265" duration="1179000" />
       <workItem from="1742496041185" duration="3204000" />
-      <workItem from="1742624357476" duration="5325000" />
+      <workItem from="1742624357476" duration="6070000" />
+      <workItem from="1742712190092" duration="2590000" />
+      <workItem from="1742717450062" duration="98000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -452,14 +455,21 @@
       <option name="project" value="LOCAL" />
       <updated>1742628773564</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Cleaner boolean and number printing">
+      <option name="closed" value="true" />
+      <created>1742630194392</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1742630194392</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Simple tree walking interpreter added. Can now interpret arithmatic expressions." />
     <MESSAGE value="add more data types." />
     <MESSAGE value="more work on type support, this time in interpreter. WIP on how to handle different types." />
     <MESSAGE value="Added bool types and more type checking for arithmatic operations." />
@@ -484,7 +494,8 @@
     <MESSAGE value="Added scope rules and simple scope management (there will be a memory leak so will need work later)" />
     <MESSAGE value="Added while loops" />
     <MESSAGE value="Implement for loops" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement for loops" />
+    <MESSAGE value="Cleaner boolean and number printing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaner boolean and number printing" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -495,6 +506,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pinky$.coverage" NAME=" Coverage Results" MODIFIED="1741506882128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pinky$pinky.coverage" NAME="pinky Coverage Results" MODIFIED="1742630107468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pinky$pinky.coverage" NAME="pinky Coverage Results" MODIFIED="1742630170765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

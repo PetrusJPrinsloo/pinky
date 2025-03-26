@@ -18,6 +18,10 @@ class Stmt(Node):
     Statements perform an action
     """
 
+class Decl(Stmt):
+    """
+    Declarations are statements to declare a new name for something
+    """
 
 class Integer(Expr):
     """
@@ -195,7 +199,7 @@ class ForStmt(Stmt):
 
 class PrintStmt(Stmt):
     """
-    Example: print value
+    Example: 'print' value
     """
 
     def __init__(self, value, end, line):
@@ -210,7 +214,7 @@ class PrintStmt(Stmt):
 
 class IfStmt(Stmt):
     """
-    if <expression> then <then_stmts> (else <else_stmts>)? end
+    'if' <expression> 'then' <then_stmts> ( 'else' <else_stmts> )? 'end'
     """
 
     def __init__(self, test, then_stmts, else_stmts, line):
@@ -228,7 +232,7 @@ class IfStmt(Stmt):
 
 class WhileStmt(Stmt):
     """
-    while <expression> do <stmts> end
+    'while' <expression> 'do' <stmts> 'end'
     """
 
     def __init__(self, test, do_stmts, line):
@@ -257,3 +261,21 @@ class Assignment(Stmt):
 
     def __repr__(self):
         return f'Assignment({self.left}, {self.right})'
+
+class FuncDecl(Decl):
+    """
+    'func' <name> '(' <params>? ')' <body_stmts> 'end'
+    """
+    def __init__(self, name):
+        pass
+
+class Params(Decl):
+    """
+    A single function parameter
+    """
+    pass
+
+class FuncCall(Stmt):
+    """
+    Calling a declared function and passing params
+    """

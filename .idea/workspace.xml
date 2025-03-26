@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Cleaner boolean and number printing">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/functions.pinky" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +174,8 @@
       <workItem from="1742496041185" duration="3204000" />
       <workItem from="1742624357476" duration="6070000" />
       <workItem from="1742712190092" duration="2590000" />
-      <workItem from="1742717450062" duration="98000" />
+      <workItem from="1742717450062" duration="2841000" />
+      <workItem from="1742970641342" duration="3400000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />

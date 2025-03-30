@@ -262,20 +262,42 @@ class Assignment(Stmt):
     def __repr__(self):
         return f'Assignment({self.left}, {self.right})'
 
+
 class FuncDecl(Decl):
     """
-    'func' <name> '(' <params>? ')' <body_stmts> 'end'
+    "func" <name> "(" <params>? ")" <body_stmts> "end"
     """
-    def __init__(self, name):
-        pass
+    def __init__(self, name, params, body_stmts, line):
+        assert isinstance(name, str), name
+        assert all(isinstance(param, Param) for param in params), params
+        self.name = name
+        self.params = params
+        self.body_stmts = body_stmts
+        self.line = line
+    def __repr__(self):
+        return f'FuncDecl({self.name!r}, {self.params}, {self.body_stmts})'
 
-class Params(Decl):
+
+class Param(Decl):
     """
     A single function parameter
     """
-    pass
+    def __init__(self, name, line):
+        assert isinstance(name, str), name
+        self.name = name
+        self.line = line
+    def __repr__(self):
+        return f'Param[{self.name!r}]'
 
-class FuncCall(Stmt):
+
+class FuncCall(Expr):
     """
-    Calling a declared function and passing params
+    <func_call>  ::=  <name> "(" <args>? ")"
+    <args> ::= <expr> ( ',' <expr> )*
     """
+    def __init__(self, name, args, line):
+        self.name = name
+        self.args = args
+        self.line = line
+    def __repr__(self):
+        return f'FuncCall({self.name!r}, {self.args})'

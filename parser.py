@@ -199,11 +199,29 @@ class Parser:
             val = self.expr()
             return PrintStmt(val, end, line=self.previous_token().line)
 
-    def func_decl(self):
-        pass
-
     def expr(self):
         return self.logical_or()
+
+    # <params>  ::=  <identifier> ("," <identifier> )*
+    def params(self):
+        params = []
+        while not self.is_next(TOK_RPAREN):
+            name = self.expect(TOK_IDENTIFIER)
+            params.append(Param(name.lexeme, line=self.previous_token().line))
+            if not self.is_next(TOK_RPAREN):
+                self.expect(TOK_COMMA)
+        return params
+
+    # <func_decl>  ::=  "func" <name> "(" <params>? ")" <body_stmts> "end"
+    def func_decl(self):
+        self.expect(TOK_FUNC)
+        name = self.expect(TOK_IDENTIFIER)
+        self.expect(TOK_LPAREN)
+        params = self.params()
+        self.expect(TOK_RPAREN)
+        body_stmts = self.stmts()
+        self.expect(TOK_END)
+        return FuncDecl(name.lexeme, params, body_stmts, line=self.previous_token().line)
 
     def stmt(self):
         # Predictive parsing, where the next token predicts what is the next statement

@@ -9,4 +9,4 @@ func factorial(n, a, b, c)
   println("The factorial of " + n + " is " + mul)
 end
 
---factorial(5)
+factorial(5)

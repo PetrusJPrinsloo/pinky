@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Designing functions">
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Can now lex and parse function declarations.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/functions.pinky" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/functions.pinky" afterDir="false" />
     </list>
@@ -177,7 +177,9 @@
       <workItem from="1742717450062" duration="2841000" />
       <workItem from="1742970641342" duration="3400000" />
       <workItem from="1743020251840" duration="628000" />
-      <workItem from="1743316845976" duration="4508000" />
+      <workItem from="1743316845976" duration="6116000" />
+      <workItem from="1743525049778" duration="64000" />
+      <workItem from="1743830449124" duration="7142000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -475,14 +477,21 @@
       <option name="project" value="LOCAL" />
       <updated>1743020273691</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Can now lex and parse function declarations.">
+      <option name="closed" value="true" />
+      <created>1743322238441</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1743322238441</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="more work on type support, this time in interpreter. WIP on how to handle different types." />
     <MESSAGE value="Added bool types and more type checking for arithmatic operations." />
     <MESSAGE value="Fixed bug where string was detected as a TOK_QUESTION by lexer" />
     <MESSAGE value="Adding comparisons WIP" />
@@ -507,7 +516,8 @@
     <MESSAGE value="Implement for loops" />
     <MESSAGE value="Cleaner boolean and number printing" />
     <MESSAGE value="Designing functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Designing functions" />
+    <MESSAGE value="Can now lex and parse function declarations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Can now lex and parse function declarations." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

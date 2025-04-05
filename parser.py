@@ -38,7 +38,7 @@ class Parser:
             return False
         if self.peek().token_type != expected_type:
             return False
-        self.curr = self.curr + 1  # If it is a match, we return True and also comsume that token
+        self.curr = self.curr + 1  # If it is a match, we return True and also consume that token
         return True
 
     # <primary>  ::=  <integer>
@@ -67,7 +67,12 @@ class Parser:
                 return Grouping(expr, line=self.previous_token().line)
         else:
             identifier = self.expect(TOK_IDENTIFIER)
-            return Identifier(identifier.lexeme, line=self.previous_token().line)
+            if self.match(TOK_LPAREN):
+                args = self.args()
+                self.expect(TOK_RPAREN)
+                return FuncCall(identifier.lexeme, args, line=self.previous_token().line)
+            else:
+                return Identifier(identifier.lexeme, line=self.previous_token().line)
 
     # <exponent> ::= <primary> ( "^" <exponent> )*
     def exponent(self):
@@ -202,6 +207,16 @@ class Parser:
     def expr(self):
         return self.logical_or()
 
+    # <args> ::= <expr> ( ',' <expr> )*
+    def args(self):
+        args = []
+        while not self.is_next(TOK_RPAREN):
+            args.append(self.expr())
+            if not self.is_next(TOK_RPAREN):
+                self.expect(TOK_COMMA)
+        return args
+
+
     # <params>  ::=  <identifier> ("," <identifier> )*
     def params(self):
         params = []
@@ -222,6 +237,8 @@ class Parser:
         body_stmts = self.stmts()
         self.expect(TOK_END)
         return FuncDecl(name.lexeme, params, body_stmts, line=self.previous_token().line)
+
+
 
     def stmt(self):
         # Predictive parsing, where the next token predicts what is the next statement

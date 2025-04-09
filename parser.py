@@ -259,10 +259,11 @@ class Parser:
             left = self.expr()
             if self.match(TOK_ASSIGN):
                 right = self.expr()
+                # handles assignment
                 return Assignment(left, right, line=self.previous_token().line)
             else:
-                # Todo: function calls go here if open bracket is found
-                pass
+                # handles a function call statement, wraps a func call expression
+                return FuncCallStmt(left, line=self.previous_token().line)
 
     def stmts(self):
         stmts = []

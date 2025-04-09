@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Can now lex and parse function declarations.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/functions.pinky" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/functions.pinky" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +179,7 @@
       <workItem from="1743316845976" duration="6116000" />
       <workItem from="1743525049778" duration="64000" />
       <workItem from="1743830449124" duration="7142000" />
+      <workItem from="1744177670559" duration="1672000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />

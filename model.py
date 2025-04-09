@@ -301,3 +301,14 @@ class FuncCall(Expr):
         self.line = line
     def __repr__(self):
         return f'FuncCall({self.name!r}, {self.args})'
+
+class FuncCallStmt(Stmt):
+    """
+    <func_call>  ::=  <name> "(" <args>? ")"
+    <args> ::= <expr> ( ',' <expr> )*
+    """
+    def __init__(self, expr, line):
+        assert isinstance(expr, FuncCall), expr
+        self.expr = expr
+    def __repr__(self):
+        return f'FuncCallStmt({self.expr!r})'

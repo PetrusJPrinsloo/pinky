@@ -213,7 +213,7 @@ class Interpreter:
                     i = i + step
 
         elif isinstance(node, FuncDecl):
-            env.set_func(node.name, (node, env)) # Todo: this is ugly, find a better way
+            env.set_func(node.name, (node, env)) # Todo: this is ugly, find a better way, should not use scope of declaration
 
         elif isinstance(node, FuncCall):
             func = env.get_func(node.name)
@@ -224,7 +224,7 @@ class Interpreter:
             func_env  = func[1]
 
             if len(node.args) != len(func_decl.params):
-                runtime_error(f'Function {func.name} expected {len(func_decl.params)} params, but {len(node.args)} were passed.', node.line)
+                runtime_error(f'Function {func_decl.name} expected {len(func_decl.params)} params, but {len(node.args)} were passed.', node.line)
 
             args = []
             for arg in node.args:
@@ -232,9 +232,10 @@ class Interpreter:
 
             new_func_env = func_env.new_env()
             for param, argval in zip(func_decl.params, args):
-                new_func_env.set_var(param, argval)
+                new_func_env.set_var(param.name, argval)
 
-            self.interpret(func_decl, new_func_env)
+            # Finally, we ask to interpret the body_stmts of the function declaration
+            self.interpret(func_decl.body_stmts, new_func_env)
 
         elif isinstance(node, FuncCallStmt):
             self.interpret(node.expr, env)

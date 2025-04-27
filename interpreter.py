@@ -12,6 +12,7 @@ class Interpreter:
     def __init__(self):
         pass
 
+    # noinspection PyInconsistentReturns
     def interpret(self, node, env):
         if isinstance(node, Integer):
             return TYPE_NUMBER, float(node.value)
@@ -210,6 +211,21 @@ class Interpreter:
                     self.interpret(node.body_stmts,
                                    block_new_env)  # pass the new child environment for the scope of the while block
                     i = i + step
+
+        elif isinstance(node, FuncDecl):
+            env.set_func(node.name, node)
+
+        elif isinstance(node, FuncCall):
+            #Todo:
+            # 1 check that the called functions has a declaration
+            # 2 does the args count match the param count
+            # 3 evaluate the arguments (They are expressions)
+            # 4 create local variables inside this scope bind arguments to these (pass by value)
+            # 5 interpret body statements using new scope
+            pass
+
+        elif isinstance(node, FuncCallStmt):
+            self.interpret(node.expr, env)
 
 
     def interpret_ast(self, node):

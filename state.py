@@ -2,6 +2,7 @@
 class Environment:
     def __init__(self, parent=None):
         self.vars = {}
+        self.funcs = {}
         self.parent = parent
 
     def get_var(self, name):
@@ -29,6 +30,12 @@ class Environment:
             self = self.parent
         # If we did not find the variable in the environments above, we create it in the original one
         original_env.vars[name] = value
+
+    def get_func(self, name):
+        pass
+
+    def set_func(self, name, value):
+        pass
 
     def new_env(self):
         """Return new environment with self as parent"""

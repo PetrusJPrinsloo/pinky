@@ -213,16 +213,28 @@ class Interpreter:
                     i = i + step
 
         elif isinstance(node, FuncDecl):
-            env.set_func(node.name, node)
+            env.set_func(node.name, (node, env)) # Todo: this is ugly, find a better way
 
         elif isinstance(node, FuncCall):
-            #Todo:
-            # 1 check that the called functions has a declaration
-            # 2 does the args count match the param count
-            # 3 evaluate the arguments (They are expressions)
-            # 4 create local variables inside this scope bind arguments to these (pass by value)
-            # 5 interpret body statements using new scope
-            pass
+            func = env.get_func(node.name)
+            if not func:
+                runtime_error(f'Function {node.name} not declared.', node.line)
+
+            func_decl = func[0]
+            func_env  = func[1]
+
+            if len(node.args) != len(func_decl.params):
+                runtime_error(f'Function {func.name} expected {len(func_decl.params)} params, but {len(node.args)} were passed.', node.line)
+
+            args = []
+            for arg in node.args:
+                args.append(self.interpret(arg, env))
+
+            new_func_env = func_env.new_env()
+            for param, argval in zip(func_decl.params, args):
+                new_func_env.set_var(param, argval)
+
+            self.interpret(func_decl, new_func_env)
 
         elif isinstance(node, FuncCallStmt):
             self.interpret(node.expr, env)

@@ -224,7 +224,7 @@ class Interpreter:
             func_env  = func[1]
 
             if len(node.args) != len(func_decl.params):
-                runtime_error(f'Function {func_decl.name} expected {len(func_decl.params)} params, but {len(node.args)} were passed.', node.line)
+                runtime_error(f'Function {func_decl.name!r} expected {len(func_decl.params)} params, but {len(node.args)} were passed.', node.line)
 
             args = []
             for arg in node.args:

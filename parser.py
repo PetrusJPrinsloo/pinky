@@ -242,8 +242,13 @@ class Parser:
         self.expect(TOK_END)
         return FuncDecl(name.lexeme, params, body_stmts, line=self.previous_token().line)
 
-
-
+    # <stmt> ::=  print_stmt
+    #          |  if_stmt
+    #          |  while_stmt
+    #          |  for_stmt
+    #          |  func_decl
+    #          |  func_call
+    #          |  ret_stmt
     def stmt(self):
         # Predictive parsing, where the next token predicts what is the next statement
         # How far do we lookahead? Different algorithms: LL(1), LALR(1), LR(1), LR(2)
@@ -259,6 +264,8 @@ class Parser:
             return self.for_stmt()
         elif self.peek().token_type == TOK_FUNC:
             return self.func_decl()
+        elif self.peek().token_type == TOK_RET:
+            return self.ret_stmt()
         else:
             left = self.expr()
             if self.match(TOK_ASSIGN):
@@ -283,3 +290,8 @@ class Parser:
     def parse(self):
         ast = self.program()
         return ast
+
+    def ret_stmt(self):
+        self.expect(TOK_RET)
+        value = self.expr()
+        return RetStmt(value, line=self.previous_token().line)

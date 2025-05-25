@@ -1,12 +1,19 @@
 -----------------------------------------------------------
 -- Function to print the factorial of a number
 -----------------------------------------------------------
+
+x := 0
+println x
+
 func factorial(n)
+  local x := 1
   mul := 1
   for i := 1, n do
     mul := mul * i
   end
+  println x
   ret mul
 end
 
 println factorial(6)
+println x

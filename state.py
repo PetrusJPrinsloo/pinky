@@ -31,6 +31,12 @@ class Environment:
         # If we did not find the variable in the environments above, we create it in the original one
         original_env.vars[name] = value
 
+    def set_local_var(self, name, value):
+        """
+         Sets a new variable in the current/immediate environment (shadowing any previous values of that variable name)
+        """
+        self.vars[name] = value
+
     # Todo: these should not be separate but part of main environment (so we can support first class functions),
     #  figure it out
     def get_func(self, name):

@@ -48,6 +48,16 @@ class Interpreter:
             env.set_var(node.left.name, (righttype, rightval))
 
 
+        if isinstance(node, LocalAssignment):
+            """
+            local Left := Right
+            """
+            # Evaluate the right-hand side expression
+            righttype, rightval = self.interpret(node.right, env)
+            # Always create a new one in the current scope
+            env.set_local_var(node.left.name, (righttype, rightval))
+
+
         elif isinstance(node, BinOp):
             lefttype, leftval = self.interpret(node.left, env)
             righttype, rightval = self.interpret(node.right, env)
@@ -232,7 +242,8 @@ class Interpreter:
 
             new_func_env = func_env.new_env()
             for param, argval in zip(func_decl.params, args):
-                new_func_env.set_var(param.name, argval)
+                new_func_env.set_local_var(param.name, argval)
+
 
             try:
                 # Finally, we ask to interpret the body_stmts of the function declaration

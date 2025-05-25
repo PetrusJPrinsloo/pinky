@@ -262,6 +262,22 @@ class Assignment(Stmt):
     def __repr__(self):
         return f'Assignment({self.left}, {self.right})'
 
+class LocalAssignment(Stmt):
+    """
+    local left := right
+    x := 5 * (7 + 8)
+    """
+
+    def __init__(self, left, right, line):
+        assert isinstance(left, Expr), left
+        assert isinstance(right, Expr), right
+        self.left = left
+        self.right = right
+        self.line = line
+
+    def __repr__(self):
+        return f'LocalAssignment({self.left}, {self.right})'
+
 
 class FuncDecl(Decl):
     """

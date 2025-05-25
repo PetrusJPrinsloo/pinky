@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="interpreting return statements.">
+    <list default="true" id="58a02483-367d-49ae-b325-377e7fa5f692" name="Changes" comment="Last pinky feature, support the local keyword to declare local variables.">
+      <change afterPath="$PROJECT_DIR$/scripts/dragon.pinky" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/website-example.pinky" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpreter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/functions.pinky" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/functions.pinky" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/tokens.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +182,7 @@
       <workItem from="1744177670559" duration="2499000" />
       <workItem from="1745732977202" duration="7407000" />
       <workItem from="1745818109203" duration="1206000" />
-      <workItem from="1748172756871" duration="6622000" />
+      <workItem from="1748172756871" duration="7877000" />
     </task>
     <task id="LOCAL-00001" summary="Basic lexer done but WIP">
       <option name="closed" value="true" />
@@ -548,14 +544,21 @@
       <option name="project" value="LOCAL" />
       <updated>1748179894121</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Last pinky feature, support the local keyword to declare local variables.">
+      <option name="closed" value="true" />
+      <created>1748183903518</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1748183903518</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added logical or" />
     <MESSAGE value="parsing logical &quot;and&quot; and logical &quot;or&quot;" />
     <MESSAGE value="Interpreter support for logical &quot;and&quot; and logical &quot;or&quot;" />
     <MESSAGE value="Also added test and fixed bug that the program would die if no newline on last line of code. (this was done in previous commit)" />
@@ -580,7 +583,8 @@
     <MESSAGE value="cape the number of parameters." />
     <MESSAGE value="parse return statements." />
     <MESSAGE value="interpreting return statements." />
-    <option name="LAST_COMMIT_MESSAGE" value="interpreting return statements." />
+    <MESSAGE value="Last pinky feature, support the local keyword to declare local variables." />
+    <option name="LAST_COMMIT_MESSAGE" value="Last pinky feature, support the local keyword to declare local variables." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
